@@ -8,14 +8,14 @@ var operator;
 showOutput(numOutput);
 
 function showOutput(numOutput){
-  calcOutput = document.getElementById("output");
-  calcOutput.innerHTML = numOutput;
+  var newOutput = document.getElementById("output");
+  newOutput.innerHTML = numOutput;
 }
 
 function inputNumber(num) {
   if(!inputOne){
-    if(num == -1){
-     tmp1 = -1 * tmp1;
+    if(num == '-1'){
+      tmp1 = -1 * tmp1;
     } else if(tmp1 == 0){
       tmp1 = num;
     } else{
@@ -25,7 +25,7 @@ function inputNumber(num) {
   } else {
     if(num == -1){
       tmp2 = -1 * tmp2;
-    } else  if(tmp2 == 0){
+    } else if(tmp2 == 0){
       tmp2 = num;
     } else{
       tmp2 = tmp2 + "" + num;
@@ -53,26 +53,26 @@ function calculation(inputOperator){
   tmp2 = parseInt(tmp2);
 
   if(inputOperator == '%'){
-    numOutput = tmp1%tmp2;
-    showOutput(numOutput);
+    output = tmp1%tmp2;
+    showOutput(output);
   } else if(inputOperator == '/'){
-    numOutput = tmp1/tmp2;
-    showOutput(numOutput);
+    output = tmp1/tmp2;
+    showOutput(output);
   } else if(inputOperator == '*'){
-    numOutput = tmp1*tmp2;
-    showOutput(numOutput);
+    output = tmp1*tmp2;
+    showOutput(output);
   } else if(inputOperator == '-'){
-    numOutput = tmp1-tmp2;
-    showOutput(numOutput);
+    output = tmp1-tmp2;
+    showOutput(output);
   } else if(inputOperator == '+'){
-    numOutput = tmp1+tmp2;
-    showOutput(numOutput);
+    output = tmp1+tmp2;
+    showOutput(output);
   } else{
     calculation(operator);
     inputTwo = false;
   }
 
-  tmp1 = numOutput;
+  tmp1 = output;
   tmp2 = 0;
 }
 
