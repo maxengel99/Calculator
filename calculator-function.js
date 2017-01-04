@@ -105,3 +105,18 @@ function calculation(){
     addition = false;
   }
 }
+
+function reset(){
+  tmp1 = 0;
+  inputOne = false;
+  tmp2 = 0;
+  tmp2 = false;
+
+  modulus = false;
+  division = false;
+  multiplication = false;
+  subtraction = false;
+  addition = false;
+
+  showOutput(tmp1);
+}
