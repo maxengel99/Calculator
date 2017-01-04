@@ -21,3 +21,8 @@
   align-items: center;
   justify-content: center;
 }
+
+#output {
+  font-size: 70px;
+  text-align: right;
+}
