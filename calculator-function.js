@@ -26,7 +26,11 @@ function inputNumber(num) {
     }
     showOutput(tmp1);
   } else {
-    tmp2 = tmp2 + "" + num;
+    if(tmp2 == 0){
+      tmp2 = num;
+    } else{
+      tmp2 = tmp2 + "" + num;
+    }
     showOutput(tmp2);
   }
 }
@@ -37,17 +41,48 @@ function operation(operator){
 
    if(operator == "%"){
     modulus = true;
+
+    division = false;
+    multiplication = false;
+    subtraction = false;
+    addition = false;
+
   } else if(operator =="/"){
     division = true;
+
+    modulus = false;
+    multiplication = false;
+    subtraction = false;
+    addition = false;
   } else if(operator == "x"){
     multiplication = true;
+
+    modulus = false;
+    division = false;
+    subtraction = false;
+    addition = false;
   } else if(operator == "-"){
     subtraction = true;
-  } else (operator == "+")
+
+    modulus = false;
+    division = false;
+    multiplication = false;
+    addition = false;
+  } else {
     addition = true;
+
+    modulus = false;
+    division = false;
+    multiplication = false;
+    subtraction = false;
+  }
 }
 
 function calculation(){
+
+  tmp1 = parseInt(tmp1);
+  tmp2 = parseInt(tmp2);
+
   if(modulus){
     output = tmp1%tmp2;
     showOutput(output);
