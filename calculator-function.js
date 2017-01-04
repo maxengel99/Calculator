@@ -2,13 +2,8 @@ var numOutput = 0;
 var tmp1 = 0;
 var inputOne = false;
 var tmp2 = 0;
-var tmp2 = false;
-
-var modulus = false;
-var division = false;
-var multiplication = false;
-var subtraction = false;
-var addition = false;
+var inputTwo = false;
+var operator;
 
 showOutput(numOutput);
 
@@ -35,88 +30,54 @@ function inputNumber(num) {
   }
 }
 
-function operation(operator){
+function operation(inputOperator){
 
   inputOne = true;
 
-   if(operator == "%"){
-    modulus = true;
-
-    division = false;
-    multiplication = false;
-    subtraction = false;
-    addition = false;
-
-  } else if(operator =="/"){
-    division = true;
-
-    modulus = false;
-    multiplication = false;
-    subtraction = false;
-    addition = false;
-  } else if(operator == "x"){
-    multiplication = true;
-
-    modulus = false;
-    division = false;
-    subtraction = false;
-    addition = false;
-  } else if(operator == "-"){
-    subtraction = true;
-
-    modulus = false;
-    division = false;
-    multiplication = false;
-    addition = false;
+  if(inputTwo){
+    calculation(operator);
   } else {
-    addition = true;
-
-    modulus = false;
-    division = false;
-    multiplication = false;
-    subtraction = false;
+    inputTwo = true;
   }
+
+  operator = inputOperator;
 }
 
-function calculation(){
+function calculation(inputOperator){
 
   tmp1 = parseInt(tmp1);
   tmp2 = parseInt(tmp2);
 
-  if(modulus){
+  if(inputOperator == '%'){
     output = tmp1%tmp2;
     showOutput(output);
-    modulus = false;
-  } else if(division){
+  } else if(inputOperator == '/'){
     output = tmp1/tmp2;
     showOutput(output);
-    division = false;
-  } else if(multiplication){
+  } else if(inputOperator == '*'){
     output = tmp1*tmp2;
     showOutput(output);
-    multiplication = false;
-  } else if(subtraction){
+  } else if(inputOperator == '-'){
     output = tmp1-tmp2;
     showOutput(output);
-    subtraction = false;
-  } else{
+  } else if(inputOperator == '+'){
     output = tmp1+tmp2;
     showOutput(output);
-    addition = false;
+  } else{
+    calculation(operator);
+    inputTwo = false;
   }
+
+  tmp1 = output;
+  tmp2 = 0;
 }
 
 function reset(){
   tmp1 = 0;
   inputOne = false;
   tmp2 = 0;
-  tmp2 = false;
-
-  modulus = false;
-  division = false;
-  multiplication = false;
-  subtraction = false;
-  addition = false;
+  inputTwo = false;
+  operator = null;
 
   showOutput(tmp1);
 }
