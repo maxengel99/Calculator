@@ -14,19 +14,34 @@ function showOutput(numOutput){
 
 function inputNumber(num) {
   if(!inputOne){
+
     if(num == '-1'){
       tmp1 = -1 * tmp1;
+    } else if (num == '.'){
+      if(tmp1.indexOf('.') > -1){
+        return;
+      } else {
+        tmp1 = tmp1 + '.';
+      }
     } else if(tmp1 == 0){
       tmp1 = num;
     } else{
       tmp1 = tmp1 + "" + num;
     }
     showOutput(tmp1);
+
   } else {
+
     if(num == -1){
       tmp2 = -1 * tmp2;
     } else if(tmp2 == 0){
       tmp2 = num;
+    } else if(num == '.'){
+      if(tmp2.indexOf('.') > -1){
+        return;
+      } else {
+        tmp2 = tmp2 + '.';
+      }
     } else{
       tmp2 = tmp2 + "" + num;
     }
@@ -49,8 +64,8 @@ function operation(inputOperator){
 
 function calculation(inputOperator){
 
-  tmp1 = parseInt(tmp1);
-  tmp2 = parseInt(tmp2);
+  tmp1 = parseFloat(tmp1);
+  tmp2 = parseFloat(tmp2);
 
   if(inputOperator == '%'){
     output = tmp1%tmp2;
