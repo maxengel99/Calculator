@@ -1,7 +1,7 @@
 var numOutput = 0;
-var tmp1;
+var tmp1 = 0;
 var inputOne = false;
-var tmp2;
+var tmp2 = 0;
 var tmp2 = false;
 
 var modulus = false;
@@ -19,9 +19,15 @@ function showOutput(numOutput){
 
 function inputNumber(num) {
   if(!inputOne){
-    tmp1 = tmp1 + "" + num;
+    if(tmp1 == 0){
+      tmp1 = num;
+    } else{
+      tmp1 = tmp1 + "" + num;
+    }
+    showOutput(tmp1);
   } else {
     tmp2 = tmp2 + "" + num;
+    showOutput(tmp2);
   }
 }
 
