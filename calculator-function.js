@@ -4,6 +4,7 @@ var inputOne = false;
 var tmp2 = 0;
 var inputTwo = false;
 var operator;
+var final = true;
 
 showOutput(numOutput);
 
@@ -13,9 +14,9 @@ function showOutput(numOutput){
 }
 
 function inputNumber(num) {
-  if(!inputOne){
 
-    if(num == '-1'){
+  if(!inputOne){
+     if(num == '-1'){
       tmp1 = -1 * tmp1;
     } else if (num == '.'){
       if(tmp1.indexOf('.') > -1){
@@ -29,23 +30,27 @@ function inputNumber(num) {
       tmp1 = tmp1 + "" + num;
     }
     showOutput(tmp1);
-
-  } else {
-
-    if(num == -1){
-      tmp2 = -1 * tmp2;
-    } else if(tmp2 == 0){
-      tmp2 = num;
-    } else if(num == '.'){
-      if(tmp2.indexOf('.') > -1){
+    } else {
+      if (final && num == '-1'){
+        tmp1 = -1 * tmp1;
+        showOutput(tmp1);
         return;
-      } else {
-        tmp2 = tmp2 + '.';
+      } else if(num == -1){
+      tmp2 = -1 * tmp2;
+      } else if(tmp2 == 0){
+      tmp2 = num;
+      } else if(num == '.'){
+        if(tmp2.indexOf('.') > -1){
+          return;
+        } else {
+          tmp2 = tmp2 + '.';
+        }
+      } else{
+        tmp2 = tmp2 + "" + num;
       }
-    } else{
-      tmp2 = tmp2 + "" + num;
-    }
-    showOutput(tmp2);
+
+      final = false;
+      showOutput(tmp2);
   }
 }
 
@@ -89,6 +94,7 @@ function calculation(inputOperator){
 
   tmp1 = output;
   tmp2 = 0;
+  final = true;
 }
 
 function reset(){
