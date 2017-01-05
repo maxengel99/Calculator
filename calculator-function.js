@@ -69,27 +69,30 @@ function calculation(inputOperator){
 
   if(inputOperator == '%'){
     output = tmp1%tmp2;
-    showOutput(output);
   } else if(inputOperator == '/'){
     output = tmp1/tmp2;
-    showOutput(output);
   } else if(inputOperator == '*'){
     output = tmp1*tmp2;
-    showOutput(output);
   } else if(inputOperator == '-'){
     output = tmp1-tmp2;
-    showOutput(output);
   } else if(inputOperator == '+'){
     output = tmp1+tmp2;
-    showOutput(output);
   } else{
     calculation(operator);
     inputTwo = false;
+    return;
   }
 
-  tmp1 = output;
-  tmp2 = 0;
-  final = true;
+  if(output > 99999999999){
+    alert("Output is too large");
+    reset();
+  } else{
+    showOutput(output);
+
+    tmp1 = output;
+    tmp2 = 0;
+    final = true;
+  }
 }
 
 function reset(){
