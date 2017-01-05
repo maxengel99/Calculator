@@ -1,62 +1,57 @@
-var numOutput = 0;
 var tmp1 = 0;
-var inputOne = false;
+var inputOne = true;
 var tmp2 = 0;
 var inputTwo = false;
 var operator;
 var final = true;
-
-showOutput(numOutput);
+showOutput(tmp1);
 
 function showOutput(numOutput){
-  var newOutput = document.getElementById("output");
-  newOutput.innerHTML = numOutput;
+  document.getElementById("output").innerHTML = numOutput;
 }
 
 function inputNumber(num) {
 
-  if(!inputOne){
+  if(inputOne){
      if(num == '-1'){
       tmp1 = -1 * tmp1;
-    } else if (num == '.'){
-      if(tmp1.indexOf('.') > -1){
-        return;
-      } else {
-        tmp1 = tmp1 + '.';
-      }
+    } else if (num == '.' && tmp1.indexOf('.') == -1 && tmp1.toString().length < 11){
+      tmp1 = tmp1 + '.';
     } else if(tmp1 == 0){
       tmp1 = num;
-    } else{
+    } else if(tmp1.toString().length < 11 && num != '.'){
       tmp1 = tmp1 + "" + num;
     }
+
     showOutput(tmp1);
+
     } else {
+
       if (final && num == '-1'){
         tmp1 = -1 * tmp1;
         showOutput(tmp1);
         return;
-      } else if(num == -1){
-      tmp2 = -1 * tmp2;
+      }
+
+      if(num == -1){
+        tmp2 = -1 * tmp2;
       } else if(tmp2 == 0){
-      tmp2 = num;
-      } else if(num == '.'){
-        if(tmp2.indexOf('.') > -1){
-          return;
-        } else {
-          tmp2 = tmp2 + '.';
-        }
-      } else{
+        tmp2 = num;
+      } else if(num == '.' && tmp2.indexOf('.') == -1 && tmp2.toString().length < 11){
+        tmp2 = tmp2 + '.';
+      } else if(tmp2.toString().length < 11 && num != '.'){
         tmp2 = tmp2 + "" + num;
       }
 
       final = false;
+
       showOutput(tmp2);
   }
 }
 
 function operation(inputOperator){
 
-  inputOne = true;
+  inputOne = false;
 
   if(inputTwo){
     calculation(operator);
@@ -99,7 +94,7 @@ function calculation(inputOperator){
 
 function reset(){
   tmp1 = 0;
-  inputOne = false;
+  inputOne = true;
   tmp2 = 0;
   inputTwo = false;
   operator = null;
