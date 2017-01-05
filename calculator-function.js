@@ -6,6 +6,7 @@ var operator;
 var final = true;
 showOutput(tmp1);
 
+
 function showOutput(numOutput){
   document.getElementById("output").innerHTML = numOutput;
 }
@@ -86,6 +87,8 @@ function calculation(inputOperator){
   if(output > 99999999999){
     alert("Output is too large");
     reset();
+  } else if(output.toString().length > 11){
+    showOutput(output.toString().substring(0,11));
   } else{
     showOutput(output);
 
