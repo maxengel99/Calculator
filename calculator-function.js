@@ -4,7 +4,6 @@ var tmp2 = 0;
 var inputTwo = false;
 var operator;
 var final = true;
-
 showOutput(tmp1);
 
 
@@ -19,7 +18,7 @@ function inputNumber(num) {
       tmp1 = -1 * tmp1;
     } else if (num == '.' && tmp1.indexOf('.') == -1 && tmp1.toString().length < 11){
       tmp1 = tmp1 + '.';
-    } else if(tmp1 == 0 || final){
+    } else if(tmp1 == 0){
       tmp1 = num;
     } else if(tmp1.toString().length < 11 && num != '.'){
       tmp1 = tmp1 + "" + num;
@@ -82,21 +81,31 @@ function calculation(inputOperator){
   } else{
     calculation(operator);
     inputTwo = false;
-    inputOne = true;
     return;
   }
 
   if(output > 99999999999){
-    alert("Output is too large");
-    reset();
-  } else if(output < .00001){
-    alert("Output is too small");
-    reset();
-  } else if(output.toString().length > 11){
-    showOutput(output.toString().substring(0,11));
+    showOutput(output.toExponential(2));
     tmp1 = output;
     tmp2 = 0;
     final = true;
+  } else if(output < -99999999999){
+    showOutput(output.toExponential(2));
+    tmp1 = output;
+    tmp2 = 0;
+    final = true;
+  } else if (output < .00001 && output > 0){
+    showOutput(output.toExponential(2));
+    tmp1 = output;
+    tmp2 = 0;
+    final = true;
+  } else if (output > -.00001 && output < 0){
+    showOutput(output.toExponential(2));
+    tmp1 = output;
+    tmp2 = 0;
+    final = true;
+  } else if(output.toString().length > 11){
+    showOutput(output.toString().substring(0,11));
   } else{
     showOutput(output);
 
